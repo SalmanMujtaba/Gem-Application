@@ -23,7 +23,19 @@
     this.setCurrent = function(newGallery){
       this.current = newGallery || 0;
     };
+
+
   });
+
+  app.controller('ReviewController', function(){
+             this.review = {};
+    
+    this.addReview = function(products)
+    {
+      products.reviews.push(this.review);
+        this.review={};
+    };  
+                 });
 
 
 
