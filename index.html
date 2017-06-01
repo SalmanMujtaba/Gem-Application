@@ -15,6 +15,8 @@
 
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 		<script type = "text/javascript" src="app.js"></script>
+    <link rel="stylesheet" type="text/css" href="mystyle.css">
+
 
 
 	</head>
@@ -85,7 +87,7 @@
             </ul>
 
             <!--  Review Form -->
-            <form name="reviewForm" ng-controller = "ReviewController as reviewCtrl" ng-submit = "reviewCtrl.addReview(product)">
+            <form name="reviewForm" ng-controller = "ReviewController as reviewCtrl" ng-submit = "reviewForm.$valid && reviewCtrl.addReview(product)" NOVALIDATE>
               <!--  Live Preview -->
               <blockquote>
                 <strong>{{reviewCtrl.review.stars}} Stars</strong>
@@ -96,7 +98,7 @@
               <!--  Review Form -->
               <h4>Submit a Review</h4>
               <fieldset class="form-group">
-                <select ng-model="reviewCtrl.review.stars" class="form-control" ng-options="stars for stars in [5,4,3,2,1]"  title="Stars">
+                <select ng-model="reviewCtrl.review.stars" class="form-control" ng-options="stars for stars in [5,4,3,2,1]"  title="Stars" required>
                   <option value="">Rate the Product</option>
                 </select>
               </fieldset>
@@ -104,7 +106,7 @@
                 <textarea ng-model="reviewCtrl.review.body" class="form-control" placeholder="Write a short review of the product..." title="Review"></textarea>
               </fieldset>
               <fieldset class="form-group">
-                <input ng-model="reviewCtrl.review.author" type="email" class="form-control" placeholder="jimmyDean@example.org" title="Email" />
+                <input ng-model="reviewCtrl.review.author" type="email" class="form-control" placeholder="jimmyDean@example.org" title="Email" required/>
               </fieldset>
               <fieldset class="form-group">
                 <input type="submit" class="btn btn-primary pull-right" value="Submit Review" />
